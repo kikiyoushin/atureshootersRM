@@ -11,7 +11,7 @@
 
 
     ;メッセージウィンドウの表示
-    @layopt layer=message0 visible=true
+    @layopt layer=message0 visible=false
 
     ;キャラクターの名前が表示される文字領域
     [ptext name="chara_name_area" layer="message0" color="white" size=28 bold=true x=180 y=510]
@@ -26,9 +26,33 @@
     [chara_new name="maki" storage="chara/maki/nrm.png" jname="マキ"  ]
 
     [layopt layer="0" visible="true"  ]
-    [chara_show name="rikka" layer="0"]
-    [chara_show name="maki"  layer="0"]
 
+[endmacro]
+
+
+[macro name="fuki"]
+    ;message0を非表示
+    [layopt layer="message0" visible="false"]
+    ;メッセージレイヤー1を表示
+    [layopt layer="message1" visible="true"]
+    ;操作をメッセージレイヤー1に変更
+    [current layer="message1"]
+    ;メッセージレイヤーを縦書きに変更(全てのレイヤー共通？)
+    [position layer="message1" vertical="true"]
+    ;メッセージレイヤー1でfuki開始
+    [fuki_start layer="message1" ]
+[endmacro]
+[macro name="endfuki"]
+    ;fukiを中止。元に戻す。
+    [fuki_stop]
+    ;message1を非表示
+    [layopt layer="message1" visible="false"]
+    ;メッセージレイヤー0を表示
+    [layopt layer="message0" visible="true"]
+    ;操作をメッセージレイヤー0に変更
+    [current layer="message0"]
+    ;縦書きを横書きに変更
+    [position layer="message0" vertical="false"]
 [endmacro]
 
 
