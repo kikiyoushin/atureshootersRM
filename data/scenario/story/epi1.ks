@@ -5,7 +5,13 @@
 ;fukiの事前設定
 [fuki_chara name="rikka" left="300" sippo="left" sippo_top="100" color="0xccc" font_color="0x222" radius="100" font_size="26"]
 [fuki_chara name="maki" left="100" sippo="right" sippo_top="100" color="0xccc" font_color="0x222" radius="100" font_size="26"]
-[position layer="message1" margint=60 marginr=60 marginb=60 marginl=60 opacity="255" border_color="0x666" border_size="5"]
+[position layer="message1" margint=30 marginr=30 marginb=30 marginl=30 opacity="255" border_color="0x666" border_size="5"]
+[macro name="fuki_others"]
+    [iscript ]
+        tf.w=(26-1)+(30+30)+36*(mp.c-2);
+    [endscript ]
+    [fuki_chara name="others" left="&1280/2-tf.w/2" top="&720/2-100" max_width="&tf.w" fix_width="&tf.w" radius="0" color="0xccc" font_color="0x222"]
+[endmacro ]
 
 ;基本の声
 [macro name="fuki_nml"]
@@ -51,8 +57,33 @@
 [chara_config time="1000"]
     ;[chara_show name="rikka" layer="0" time="50"]
     [chara_show name="maki"  layer="0"]
+    [chara_show name="rikka"  layer="0"]
 
 [fuki]
+
+#rikka
+六花てすと[r]
+六花てすと[r]
+六花てすと[r]
+六花てすと[r]
+六花てすと[r]
+六花てすと[p]
+#maki
+マキてすと[p]
+
+[fuki_others c="4"]
+#
+othersてすと[r ]
+othersてすと[r ]
+othersてすと[r ]
+othersてすと
+
+[s]
+
+[endfuki ]
+[s ]
+;=====ここまでテスト
+
 #maki
 六花、遅いなぁ…[p]
 
