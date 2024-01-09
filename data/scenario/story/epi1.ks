@@ -38,12 +38,26 @@
     [font italic="true"]
 [endmacro ]
 ;===========事前設定↑====================
-[bg storage="room.jpg" time="50"]
+[mask color="white" time="50" ]
+[playse storage="chime.mp3" ]
+[bg storage="sky0.jpg" time="50" ]
+[mask_off time="1000" ]
+[wait time="1000" ]
+[bg storage="room.jpg" time="1000"]
+
+
+[playbgm storage="../bgm/bgm11休み時間bpm110.mp3" loop="true" ]
+[fadeoutse time="1000" ]
 [chara_config time="50"]
-    [chara_show name="rikka" layer="0" time="50"]
-    [chara_show name="maki"  layer="0" time="50"]
+    ;[chara_show name="rikka" layer="0" time="50"]
+    [chara_show name="maki"  layer="0" time="1000"]
+
+[fuki]
+#maki
+六花、遅いなぁ…[p]
 
 
+[endfuki ]
 
 [fuki]
     #六花
