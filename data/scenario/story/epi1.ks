@@ -48,38 +48,34 @@
 
 [playbgm storage="../bgm/bgm11休み時間bpm110.mp3" loop="true" ]
 [fadeoutse time="1000" ]
-[chara_config time="50"]
+[chara_config time="1000"]
     ;[chara_show name="rikka" layer="0" time="50"]
-    [chara_show name="maki"  layer="0" time="1000"]
+    [chara_show name="maki"  layer="0"]
 
 [fuki]
 #maki
 六花、遅いなぁ…[p]
 
+;[chara_hide name="maki" time="1000" wait="true" ]
+
+[filter sepia="50" ]
+
+[chara_show name="rikka" ]
+#rikka
+明日、アレ持ってきて教室で待ってて！[p]
+[chara_hide name="rikka" time="50"  ]
+[free_filter ]
+
+[chara_show name="maki" time="50" wait="true" ]
+#maki
+・・・って言ってたのに・・・。[p]
+#maki
+ねえ、あずき。[p]
+[image layer="0"  storage="fgr/azuki.png" time="1000" ]
+#
+この子は「和田あずき」。全長75mmの組み立てフィギュアだ。[l][r]
+かわいいかわいい、私が組み立てたフィギュアだ。[p]
 
 [endfuki ]
-
-[fuki]
-    #六花
-    発現テスト[p ]
-[fuki_nml name="rikka"]
-
-    聞いてよ！[l][r]
-    makiちゃん！[p]
-
-[resetfont]
-[fuki_big name="maki"]
-    #マキ
-    なあに？[p]
-[resetfont ]
-
-[fuki_big name="rikka"]
-    #六花
-    (うわわ…ご機嫌斜めだ…)[p]
-[resetfont]
-
-[endfuki]
-#
-終わり[p]
 
 [s ]
