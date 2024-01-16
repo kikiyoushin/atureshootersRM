@@ -1,3 +1,32 @@
+;[autoload]
+
+/*
+    [iscript ]
+    const fs = require('fs');
+    const path = require('path');
+
+    function countFilesInDirectory(directoryPath) {
+    try {
+        const files = fs.readdirSync(directoryPath);
+        return files.length;
+    } catch (err) {
+        console.error('エラー:', err);
+        return -1; // エラー時は-1を返すなどの対応が可能です
+    }
+    }
+
+    // 現在のスクリプトファイルからの相対パスを使用する例
+    const directoryPath = './data/fgimage/chara/akane/';
+    const absolutePath = path.resolve(__dirname, directoryPath); // 絶対パスに変換
+
+    const fileCount = countFilesInDirectory(absolutePath);
+    if (fileCount >= 0) {
+    console.log(`ディレクトリ内のファイル数: ${fileCount}`);
+    }
+    [endscript ]
+
+    [s ]
+*/
 [menu]
 ;キャラ登録が最初一回でいいのでは？
 [chara_reg]
@@ -57,56 +86,213 @@
 [chara_config time="1000"]
     ;[chara_show name="rikka" layer="0" time="50"]
     [chara_show name="maki"  layer="0"]
-    [chara_show name="rikka"  layer="0"]
 
 [fuki]
 
-#rikka
-六花てすと[r]
-六花てすと[r]
-六花てすと[r]
-六花てすと[r]
-六花てすと[r]
-六花てすと[p]
-#maki
-マキてすと[p]
-
-[fuki_others c="4"]
-#
-othersてすと[r ]
-othersてすと[r ]
-othersてすと[r ]
-othersてすと
-
-[s]
-
-[endfuki ]
-[s ]
-;=====ここまでテスト
-
 #maki
 六花、遅いなぁ…[p]
-
-;[chara_hide name="maki" time="1000" wait="true" ]
 
 [filter sepia="50" ]
 
 [chara_show name="rikka" ]
 #rikka
-明日、アレ持ってきて教室で待ってて！[p]
+明日、アレ持ってきて[r]教室で待ってて！[p]
 [chara_hide name="rikka" time="50"  ]
 [free_filter ]
 
-[chara_show name="maki" time="50" wait="true" ]
+[chara_show name="maki" time="50" wait="true" zindex="1" ]
 #maki
 ・・・って言ってたのに・・・。[p]
 #maki
 ねえ、あずき。[p]
-[image layer="0"  storage="fgr/azuki.png" time="1000" ]
-#
-この子は「和田あずき」。全長75mmの組み立てフィギュアだ。[l][r]
-かわいいかわいい、私が組み立てたフィギュアだ。[p]
+[image layer="0" name="topic"   storage="fgr/azuki.png" time="1000" ]
 
+[fuki_others c="7"]
+#
+この子は[r]「和田あずき」。[l][r]全長75mmの組み立てフィギュアだ。[l][r]
+
+[chara_config pos_mode="false" anim="false" ]
+[chara_show name="rikka" left="&1280/2-400/2" top="&720-600" zindex="0" time="50"   ]
+
+かわいいかわいい[l][r]私が組み立てた[r]フィギュアだ。[p]
+
+#rikka
+お待たせ～[p]
+
+[chara_config anim="true" talk_anim="up" ]
+
+#maki
+うわぁ！[p]
+
+[chara_config talk_anim="none" pos_mode="true"]
+
+[chara_hide name="maki"  time="50" ]
+[free name="topic"  layer="0" ]
+
+;[wait time="1000" ]
+
+;[chara_show name="rikka" wait="false" ]
+[chara_show name="maki" wait="true" time="500" ]
+
+#rikka
+どうしたの[p]
+
+#maki
+ううん、何も[l][r]
+あれ、その箱は？
+
+[image layer="0" name="topic"   storage="topic/package.jpg" time="1000" left="&1280-285"]
+[p]
+
+[stopbgm ]
+
+[autosave ]
+
+*save
+#rikka
+チュアシュを遊ぼう[p]
+
+#maki
+え？[p]
+
+[layopt layer="message1" visible="false"  ]
+
+
+[keyframe name="roll" ]
+    [frame p="0%" rotateZ="0deg" y="0"]
+    [frame p="100%" rotateZ="-360deg" y="-100"]
+
+[endkeyframe ]
+
+
+[camera x="&1280/2-300" y="&720/2-200" zoom="2" ease_type="ease-out" time="500" ]
+[playbgm storage="../bgm/bgm02ヒロインB(活発）登場bpm170.mp3" loop="true" ]
+[playse storage="きらーん1.mp3" ]
+[layopt layer="message1" visible="true"  ]
+
+#rikka
+チュアシュを遊ぼう！！(大声)[p]
+[reset_camera time="50" ]
+#maki
+今から!?[p]
+[iscript ]
+    tf.i=300*3+100*2
+    tf.i=(1280-tf.i)/2
+    tf.j=300
+    tf.l=tf.j/3
+[endscript ]
+[image layer="0" name="topic,topic1" storage="topic/tblno1.jpg" time="500" top="0" left="&tf.i+(tf.j+tf.l)*0"     ]
+もう放課後だし、
+[image layer="0" name="topic,topic2" storage="topic/tblno2.jpg" time="500" top="0" left="&tf.i+(tf.j+tf.l)*1"     ]
+晩御飯も布団もないよ？[l][r]
+[image layer="0" name="topic,topic3" storage="topic/tblno3.jpg" time="500" top="0" left="&tf.i+(tf.j+tf.l)*2"     ]
+無理無理！[p ]
+
+(時間があれば遊びたいけど…)[p ]
+
+[camera zoom="3" x="200" y="50" ease_type="ease-out" time="500"]
+
+#rikka
+本場出身のマキちゃん!![r]ご心配なく!!![p]
+
+[reset_camera time="50" ]
+
+
+[iscript ]
+    tf.i=0
+    tf.txt=[];
+    tf.txt[0]='30分で終わる!';
+    tf.txt[1]='準備は2ステップ!';
+    tf.txt[2]='シンプルでわかりやすい';
+
+[endscript ]
+
+*try
+[text val="&tf.txt[tf.i]"]
+[kanim name="rikka" keyframe="roll" mode="none" count="1" time="500"  ]
+[anim name="rikka" left="-=200" time="500" ]
+[wa]
+[free layer="0" name="&'topic'+(3-tf.i)" time="500" wait="false" ]
+[wait time="1000" ]
+[cm ]
+
+@eval exp="tf.i++" 
+@jump target="*try" cond="tf.i!=3"
+
+[camera zoom="2.5" x="-200" y="100" time="500"  ]
+
+ね！(お目目キラキラ)[p]
+[camera zoom="2.5" x="-300" y="100" time="500"  ]
+遊ぼう！[p]
+[camera zoom="5" time="500" y="0" time="500" ]
+#maki
+わ、わかった！[l][r]
+わかったから！！！！[p]
+
+[kanim name="rikka" keyframe="roll" count="2" time="500" ]
+[anim name="rikka" left="&200*3" time="500"  wait="false"]
+
+[reset_camera time="50" ]
+[wa ]
+[wait time="500" ]
+
+#rikka
+よっし！！[p]
+
+#maki
+はいはい…それで？[r]
+持って来てっていうことはこれを使うんだよね？[p]
+
+[image layer="0" name="topic"   storage="fgr/azuki.png" time="1000" ]
+
+#rikka
+おおー！ありがと！[r]そうそう！[p]
+[free name="topic" layer="0" time="500" ]
+
+[keyframe name="flap" ]
+    [frame p="0%" rotateY="0deg"  ]
+    [frame p="100%" rotateY="360deg"  ]
+[endkeyframe ]
+
+[layopt layer="message1" visible="false"  ]
+
+[kanim name="rikka" keyframe="flap" count="2" time="500" ]
+[kanim name="maki" keyframe="flap" count="1" time="250" ]
+[anim name="rikka" left="+=300" time="500" ]
+[anim name="maki" left="-=300" time="500" ]
+
+[wa]
+[fadeoutbgm time="500" ]
+[layopt layer="message1" visible="true"  ]
+
+#rikka
+と、いうわけで！[p]
+[playbgm storage="../bgm/bgm09登校bpm130.mp3" ]
+これが箱の中身！[p]
+[chara_hide_all layer="0" time="100" wait="true" ]
+;[wait time="1000"]
+[layopt layer="message1" visible="false"  ]
+
+
+[image name="keying" storage="topic/keying.jpg" layer="0" zindex="0" left="&(1280-1152)/2" top="&(720-648)/2" page="back" ]
+[trans layer="0" time="500" method="bounceIn" ]
+[wait time="3500"]
+[chara_show layer="1" name="rikka" zindex="99" time="500"  wait="false" ]
+[chara_show layer="1" name="maki" zindex="98"  time="800"  wait="true" ]
+[anim name="rikka" left="+=300" time="500" ]
+[anim name="maki" left="-=300" time="500" ]
+
+[layopt layer="message1" visible="true"  ]
+
+#maki
+なんだこれ[p]
+
+#rikka
+これを専門用語で『素材不足』といいます。[p]
 [endfuki ]
+
+#
+第1話終わり。続く・・・！
+
 
 [s ]

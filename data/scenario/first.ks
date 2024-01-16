@@ -1,6 +1,6 @@
 ;一番最初に呼び出されるファイル
 
-[title name="ティラノスクリプト解説"]
+[title name="AtureshootersRM"]
 
 [stop_keyconfig]
 
@@ -21,7 +21,7 @@
 
 
 ;編集中はこっち
-@jump storage="story/epi1.ks"
+;@jump storage="story/epi1.ks"
 
 ;タイトル画面へ移動
 @jump storage="title.ks"
